@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Core.AboutCreatorPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:cake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:local="clr-namespace:Core"
+    android:Application.WindowSoftInputModeAdjust="Resize"
+    NavigationPage.HasNavigationBar="False">
+
+    <Grid ColumnDefinitions="*" RowDefinitions="4*,6*">
+
+        <Image
+            Grid.RowSpan="3"
+            Grid.ColumnSpan="2"
+            Margin="0,0,0,0"
+            Aspect="AspectFill"
+            Source="ic_background_creator" />
+        <Image
+            Grid.RowSpan="3"
+            Grid.ColumnSpan="2"
+            Margin="0,0,0,-70"
+            Aspect="AspectFill"
+            Opacity="0.2"
+            Source="ic_aurora.jpg" />
+
+        <BoxView
+            Grid.RowSpan="3"
+            Grid.ColumnSpan="2"
+            BackgroundColor="Black"
+            Opacity="0.5" />
+
+        <local:SvgImageControl
+            Grid.Row="0"
+            Grid.ColumnSpan="2"
+            Margin="0,40,20,0"
+            Command="{Binding CloseCommand}"
+            HeightRequest="24"
+            HorizontalOptions="EndAndExpand"
+            ResourceId="ic_close"
+            VerticalOptions="StartAndExpand"
+            WidthRequest="24" />
+
+        <Label
+            Grid.Row="0"
+            Grid.ColumnSpan="2"
+            Margin="36,0,0,0"
+            FontFamily="MontBlack"
+            FontSize="35"
+            Text="Sobre o idealizador"
+            TextColor="White"
+            VerticalOptions="EndAndExpand" />
+
+        <cake:PancakeView
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            Margin="36,0"
+            Padding="16"
+            CornerRadius="10"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="StartAndExpand">
+
+            <Label
+                FontFamily="MontRegular"
+                FontSize="16"
+                Text="Giuseppe Vecchi, casado com Thays e pai de 4 filhos, católico e criador da 1ª comunidade online de formação masculina para homens católicos do Brasil! Desde 2011 evangeliza por meio de palestras e desde 2019 está nas redes sociais, onde ajuda diariamente homens a se tornarem os melhores: esposo, pai e provedor!"
+                TextColor="White"
+                VerticalOptions="StartAndExpand" />
+            <cake:PancakeView.Border>
+                <cake:Border
+                    DrawingStyle="Outside"
+                    Thickness="1"
+                    Color="White" />
+            </cake:PancakeView.Border>
+        </cake:PancakeView>
+        <Label
+            Grid.Row="1"
+            Grid.ColumnSpan="2"
+            FontFamily="MontBlack"
+            FontSize="12"
+            HorizontalOptions="CenterAndExpand"
+            HorizontalTextAlignment="Center"
+            Text="Desenvolvido por Novassat Systems"
+            TextColor="White"
+            VerticalOptions="EndAndExpand"
+            VerticalTextAlignment="Center">
+            <Label.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <OnPlatform.Platforms>
+                        <On Platform="iOS" Value="0, 16, 0, 16" />
+                        <On Platform="Android" Value="0,16,0,16" />
+                    </OnPlatform.Platforms>
+                </OnPlatform>
+            </Label.Margin>
+        </Label>
+    </Grid>
+
+</ContentPage>

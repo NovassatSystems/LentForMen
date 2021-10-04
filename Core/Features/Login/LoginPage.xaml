@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Core.LoginPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:cake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:local="clr-namespace:Core"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    x:Name="Root"
+    Padding="0"
+    ios:Page.UseSafeArea="True"
+    NavigationPage.HasNavigationBar="False">
+    <!--  MAIN  -->
+    <ScrollView>
+        <Grid
+            Padding="0"
+            HorizontalOptions="FillAndExpand"
+            RowDefinitions="*, Auto"
+            VerticalOptions="FillAndExpand">
+
+            <Image
+                Grid.RowSpan="2"
+                Aspect="AspectFill"
+                Opacity="1"
+                Source="ic_background_login" />
+            <xct:MediaElement
+                Grid.RowSpan="2"
+                Aspect="AspectFill"
+                AutoPlay="True"
+                HorizontalOptions="FillAndExpand"
+                IsLooping="True"
+                ShowsPlaybackControls="False"
+                Source="ms-appx:///desert_walk_playback.mp4"
+                VerticalOptions="FillAndExpand" />
+            <Image
+                Grid.RowSpan="2"
+                Margin="0,0,0,-70"
+                Aspect="AspectFill"
+                Opacity="0.45"
+                Source="ic_aurora" />
+            <BoxView
+                Grid.RowSpan="2"
+                BackgroundColor="Black"
+                Opacity="0.5" />
+
+
+            <Grid Margin="0,60,0,0" RowDefinitions="Auto, Auto, Auto, Auto, Auto">
+
+                <Image HeightRequest="250" Source="ic_logo">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding RegisterUserCommand}" NumberOfTapsRequired="2" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <cake:PancakeView
+                    Grid.Row="1"
+                    Margin="36,30,36,0"
+                    Padding="8"
+                    CornerRadius="10"
+                    VerticalOptions="StartAndExpand">
+                    <Grid ColumnDefinitions="Auto, *">
+                        <local:SvgImageControl
+                            Grid.Column="0"
+                            HeightRequest="24"
+                            ResourceId="ic_user" />
+
+                        <Entry
+                            x:Name="entryName"
+                            Grid.Column="1"
+                            FontFamily="MontRegular"
+                            HorizontalOptions="FillAndExpand"
+                            Keyboard="Default"
+                            Placeholder="Insira o usuário"
+                            PlaceholderColor="White"
+                            Text="{Binding Username}"
+                            TextColor="White"
+                            VerticalOptions="CenterAndExpand" />
+                    </Grid>
+                    <cake:PancakeView.Border>
+                        <cake:Border
+                            x:Name="border"
+                            DrawingStyle="Outside"
+                            Thickness="1"
+                            Color="White" />
+                    </cake:PancakeView.Border>
+                </cake:PancakeView>
+                <cake:PancakeView
+                    Grid.Row="2"
+                    Margin="36,16,36,0"
+                    Padding="8"
+                    CornerRadius="10"
+                    VerticalOptions="StartAndExpand">
+                    <Grid ColumnDefinitions="Auto, *">
+                        <local:SvgImageControl
+                            Grid.Column="0"
+                            HeightRequest="24"
+                            ResourceId="ic_key" />
+
+                        <Entry
+                            Grid.Column="1"
+                            FontFamily="MontRegular"
+                            HorizontalOptions="FillAndExpand"
+                            IsPassword="True"
+                            Placeholder="Insira a senha"
+                            PlaceholderColor="White"
+                            Text="{Binding Password}"
+                            TextColor="White"
+                            VerticalOptions="CenterAndExpand" />
+                    </Grid>
+                    <cake:PancakeView.Border>
+                        <cake:Border
+                            DrawingStyle="Outside"
+                            Thickness="1"
+                            Color="White" />
+                    </cake:PancakeView.Border>
+                </cake:PancakeView>
+
+                <Grid
+                    Grid.Row="3"
+                    Margin="50,16,0,0"
+                    ColumnDefinitions="Auto, *">
+                    <local:SvgImageControl ResourceId="ic_unchecked" WidthAndHeight="16">
+                        <local:SvgImageControl.Triggers>
+                            <DataTrigger
+                                Binding="{Binding StayLogged}"
+                                TargetType="local:SvgImageControl"
+                                Value="True">
+                                <Setter Property="ResourceId" Value="ic_checked" />
+                            </DataTrigger>
+                        </local:SvgImageControl.Triggers>
+                    </local:SvgImageControl>
+                    <Label
+                        Grid.Column="1"
+                        FontFamily="MontLight"
+                        FontSize="16"
+                        HorizontalOptions="Start"
+                        Text="Permanecer logado"
+                        TextColor="White" />
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding StayLoggedCommand}" NumberOfTapsRequired="1" />
+                    </Grid.GestureRecognizers>
+                </Grid>
+
+                <!--  Botão de login  -->
+                <cake:PancakeView
+                    Grid.Row="4"
+                    Margin="62,16"
+                    CornerRadius="10"
+                    HeightRequest="50"
+                    HorizontalOptions="FillAndExpand">
+                    <cake:PancakeView
+                        Grid.Column="1"
+                        BackgroundColor="#7F000000"
+                        CornerRadius="10"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand">
+                        <Label
+                            Grid.Column="0"
+                            Padding="8"
+                            FontFamily="MontRegular"
+                            FontSize="20"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="Login"
+                            TextColor="White"
+                            VerticalOptions="CenterAndExpand" />
+                        <cake:PancakeView.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding LoginUserCommand}" NumberOfTapsRequired="1" />
+                        </cake:PancakeView.GestureRecognizers>
+                    </cake:PancakeView>
+
+
+
+                </cake:PancakeView>
+                <Frame
+                    Grid.Row="5"
+                    Padding="4"
+                    CornerRadius="10"
+                    HeightRequest="20"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="Center">
+                    <Label
+                        Margin="10,0"
+                        BackgroundColor="White"
+                        FontFamily="MontRegular"
+                        FontSize="14"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Text="Preciso de ajuda!"
+                        TextColor="#5046af"
+                        VerticalOptions="CenterAndExpand"
+                        VerticalTextAlignment="Center" />
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding HelpCommand}" NumberOfTapsRequired="1" />
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </Grid>
+
+
+            <Label
+                Grid.Row="1"
+                FontFamily="MontBlack"
+                FontSize="12"
+                HorizontalOptions="CenterAndExpand"
+                HorizontalTextAlignment="Center"
+                Text="Desenvolvido por Novassat Systems"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center">
+                <Label.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <OnPlatform.Platforms>
+                            <On Platform="iOS" Value="0, 16, 0, 44" />
+                            <On Platform="Android" Value="0,16,0,50" />
+                        </OnPlatform.Platforms>
+                    </OnPlatform>
+                </Label.Margin>
+            </Label>
+            <Label
+                Grid.Row="1"
+                FontFamily="MontBlack"
+                FontSize="12"
+                HorizontalOptions="CenterAndExpand"
+                HorizontalTextAlignment="Center"
+                Text="{Binding Version}"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center">
+                <Label.Margin>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <OnPlatform.Platforms>
+                            <On Platform="iOS" Value="0, 16, 0, -12" />
+                            <On Platform="Android" Value="0,16,0,20" />
+                        </OnPlatform.Platforms>
+                    </OnPlatform>
+                </Label.Margin>
+            </Label>
+        </Grid>
+    </ScrollView>
+</ContentPage>

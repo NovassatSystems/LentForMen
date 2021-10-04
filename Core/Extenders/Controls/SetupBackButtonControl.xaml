@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="Core.SetupBackButtonControl"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Core"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    xct:TouchEffect.Command="{Binding BackCommand}"
+    xct:TouchEffect.HoveredScale="1.2"
+    xct:TouchEffect.NativeAnimation="True">
+    <local:SvgImageControl
+        HorizontalOptions="Start"
+        ResourceId="back_button_circle_gray"
+        VerticalOptions="End"
+        WidthAndHeight="65" />
+</ContentView>

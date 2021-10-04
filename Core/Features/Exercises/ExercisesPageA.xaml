@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Core.ExercisesPageA"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Core">
+    <Grid RowDefinitions="*">
+
+        <Image
+            Aspect="AspectFill"
+            Opacity="1"
+            Source="ic_background" />
+        <Image
+            Margin="0,0,0,0"
+            Aspect="AspectFill"
+            Opacity="0.5"
+            Source="ic_aurora" />
+        <controls:SvgImageControl
+            Margin="0,30,20,0"
+            Command="{Binding CloseModalCommand}"
+            HeightRequest="24"
+            HorizontalOptions="EndAndExpand"
+            ResourceId="ic_close"
+            VerticalOptions="StartAndExpand"
+            WidthRequest="24" />
+        <StackLayout Margin="16,60,16,0" BackgroundColor="Transparent">
+            <controls:PdfWebView
+                x:Name="PdfView"
+                BackgroundColor="Transparent"
+                HorizontalOptions="FillAndExpand"
+                Opacity="0.9"
+                VerticalOptions="FillAndExpand" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

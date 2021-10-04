@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Grid
+    x:Class="Core.NavigationBarControl"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Core"
+    xmlns:prism="http://prismlibrary.com"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    ColumnDefinitions="*, Auto, *"
+    HorizontalOptions="FillAndExpand">
+    <local:SvgImageControl
+        x:Name="icon"
+        Margin="{OnPlatform Android='16,0,0,0',
+                            iOS='12, 0, 0, 0'}"
+        Padding="4"
+        xct:TouchEffect.Command="{prism:GoBack}"
+        HorizontalOptions="Start"
+        ResourceId="ic_back"
+        VerticalOptions="Center"
+        WidthAndHeight="28" />
+    <Label
+        x:Name="title"
+        Grid.Column="1"
+        FontAttributes="Bold"
+        FontSize="Large"
+        TextColor="White"
+        VerticalOptions="Center" />
+</Grid>

@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Core.AboutProgramPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:cake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:local="clr-namespace:Core"
+    android:Application.WindowSoftInputModeAdjust="Resize"
+    NavigationPage.HasNavigationBar="False">
+
+    <Grid RowDefinitions="0.8*, 8*, Auto">
+        <Image
+            Grid.RowSpan="3"
+            Margin="0,0,0,-10"
+            Aspect="AspectFill"
+            Source="ic_background_program" />
+        <Image
+            Grid.RowSpan="3"
+            Margin="0,0,0,-70"
+            Aspect="AspectFill"
+            Opacity="0.2"
+            Source="ic_aurora" />
+
+        <BoxView
+            Grid.RowSpan="3"
+            Margin="0,0,0,-10"
+            BackgroundColor="Black"
+            Opacity="0.5" />
+
+        <local:SvgImageControl
+            Grid.Row="0"
+            Margin="0,40,20,0"
+            Command="{Binding CloseCommand}"
+            HeightRequest="24"
+            HorizontalOptions="EndAndExpand"
+            ResourceId="ic_close"
+            VerticalOptions="StartAndExpand"
+            WidthRequest="24" />
+        <Label
+            Grid.Row="1"
+            Margin="36,0,36,0"
+            FontFamily="MontBlack"
+            FontSize="35"
+            HorizontalOptions="FillAndExpand"
+            Text="Sobre o programa"
+            TextColor="White"
+            VerticalOptions="StartAndExpand" />
+
+        <cake:PancakeView
+            Grid.Row="1"
+            Margin="36,50,36,0"
+            Padding="16"
+            CornerRadius="10"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="StartAndExpand">
+            <ScrollView>
+                <Label
+                    FontFamily="MontRegular"
+                    FontSize="16"
+                    Text="O programa &quot;Quaresma para homens! Não estamos sozinhos&quot; é um desmembramento da comunidade Firmes na Brecha criada em 2020 pelo idealizador deste projeto. O &quot;Quaresma para homens&quot; foi criado para ajudar os homens a fazerem uma nova preparação espiritual até a páscoa, e assim fortalecerem ainda mais a sua masculinidade. O programa é baseado no que a igreja nos pede neste tempo quaresmal que deve ser: aprofundar a vida de oração, refrear as paixões e fortalecer o corpo através das penitências e exercer a caridade através da ajuda mútua entre os homens. Você faz parte do maior e melhor programa de preparação espiritual exclusivo para homens."
+                    TextColor="White"
+                    VerticalOptions="StartAndExpand" />
+            </ScrollView>
+            <cake:PancakeView.Border>
+                <cake:Border
+                    DrawingStyle="Outside"
+                    Thickness="1"
+                    Color="White" />
+            </cake:PancakeView.Border>
+        </cake:PancakeView>
+
+
+        <Label
+            Grid.Row="2"
+            FontFamily="MontBlack"
+            FontSize="12"
+            HorizontalOptions="CenterAndExpand"
+            HorizontalTextAlignment="Center"
+            Text="Desenvolvido por Novassat Systems"
+            TextColor="White"
+            VerticalOptions="CenterAndExpand"
+            VerticalTextAlignment="Center">
+            <Label.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <OnPlatform.Platforms>
+                        <On Platform="iOS" Value="0, 16, 0, 16" />
+                        <On Platform="Android" Value="0,16,0,50" />
+                    </OnPlatform.Platforms>
+                </OnPlatform>
+            </Label.Margin>
+        </Label>
+    </Grid>
+</ContentPage>

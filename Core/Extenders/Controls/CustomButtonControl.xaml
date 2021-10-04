@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="Core.CustomButtonControl"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    x:Name="rootContent"
+    Padding="1,1,1,3"
+    HorizontalOptions="FillAndExpand"
+    VerticalOptions="Start">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Color x:Key="EnabledTextColor">#9E9292</Color>
+            <Color x:Key="DisableColor">#4D9E9292</Color>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <pancake:PancakeView CornerRadius="30" HorizontalOptions="FillAndExpand">
+        <Button
+            x:Name="button"
+            BackgroundColor="White"
+            CornerRadius="30"
+            HeightRequest="65"
+            HorizontalOptions="FillAndExpand"
+            IsEnabled="{Binding IsEnabled, Source={x:Reference rootContent}}"
+            TextColor="{StaticResource DisableColor}">
+            <Button.Triggers>
+                <DataTrigger
+                    Binding="{Binding IsEnabled, Source={x:Reference rootContent}}"
+                    TargetType="Button"
+                    Value="True">
+                    <Setter Property="TextColor" Value="{StaticResource EnabledTextColor}" />
+                </DataTrigger>
+            </Button.Triggers>
+        </Button>
+        <pancake:PancakeView.Border>
+            <pancake:Border Thickness="2" Color="{StaticResource DisableColor}" />
+        </pancake:PancakeView.Border>
+        <pancake:PancakeView.Triggers>
+            <DataTrigger
+                Binding="{Binding IsEnabled, Source={x:Reference rootContent}}"
+                TargetType="pancake:PancakeView"
+                Value="True">
+                <Setter Property="Border">
+                    <pancake:Border
+                        GradientEndPoint="1,0"
+                        GradientStartPoint="0,0"
+                        Thickness="{OnPlatform Android=2,
+                                               iOS=4}">
+                        <pancake:Border.GradientStops>
+                            <pancake:GradientStop Offset="0" Color="#FD5D60" />
+                            <pancake:GradientStop Offset="1" Color="#662D91" />
+                        </pancake:Border.GradientStops>
+                    </pancake:Border>
+                </Setter>
+            </DataTrigger>
+        </pancake:PancakeView.Triggers>
+    </pancake:PancakeView>
+</ContentView>

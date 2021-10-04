@@ -1,0 +1,884 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Core.DefaultPrayerPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:cake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:local="clr-namespace:Core"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+    <Grid RowDefinitions="Auto,Auto,*,Auto">
+        <Image
+            Grid.RowSpan="4"
+            Aspect="AspectFill"
+            Opacity="1"
+            Source="ic_background" />
+        <xct:MediaElement
+            Grid.RowSpan="4"
+            Aspect="AspectFill"
+            AutoPlay="True"
+            HorizontalOptions="FillAndExpand"
+            IsLooping="True"
+            ShowsPlaybackControls="False"
+            Source="ms-appx:///pray_playback.mp4"
+            VerticalOptions="FillAndExpand" />
+        <Image
+            Grid.RowSpan="4"
+            Margin="0,0,0,-70"
+            Aspect="AspectFill"
+            Opacity="0.2"
+            Source="ic_aurora" />
+        <BoxView
+            Grid.RowSpan="4"
+            BackgroundColor="Black"
+            Opacity="0.5" />
+
+        <local:SvgImageControl
+            Grid.Row="1"
+            Margin="0,30,20,0"
+            Command="{Binding CloseModalCommand}"
+            HeightRequest="24"
+            HorizontalOptions="EndAndExpand"
+            ResourceId="ic_close"
+            VerticalOptions="StartAndExpand"
+            WidthRequest="24    " />
+
+        <Label
+            Grid.Row="1"
+            Margin="0,60,0,0"
+            FontFamily="MontBlack"
+            FontSize="20"
+            HorizontalOptions="Center"
+            Text="Orações complementares"
+            TextColor="White"
+            VerticalOptions="Start" />
+
+
+
+
+        <ScrollView Grid.Row="2">
+            <Grid Padding="16,0" RowDefinitions="Auto,Auto,Auto,Auto,Auto">
+
+                <!--  VINDE ESPÌRITO SANTO  -->
+                <xct:Expander
+                    x:Name="reflectionExpander"
+                    Grid.Row="0"
+                    CollapseAnimationLength="500"
+                    Tapped="reflectionExpander_Tapped"
+                    VerticalOptions="StartAndExpand">
+                    <xct:Expander.Header>
+                        <cake:PancakeView BackgroundColor="#7F000000" CornerRadius="10,10,0,0">
+                            <Grid ColumnDefinitions="*, Auto" HorizontalOptions="FillAndExpand">
+                                <StackLayout
+                                    Grid.Column="0"
+                                    Margin="20"
+                                    HorizontalOptions="Start"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center">
+                                    <local:SvgImageControl ResourceId="ic_holy_spirit" />
+                                    <Label
+                                        Margin="8,0,0,0"
+                                        FontFamily="MontRegular"
+                                        FontSize="12"
+                                        Text="Vinde Espírito Santo(7h30m)"
+                                        TextColor="White"
+                                        VerticalOptions="Center" />
+                                </StackLayout>
+                                <local:SvgImageControl
+                                    Margin="0,0,8,0"
+                                    HeightRequest="20"
+                                    HorizontalOptions="EndAndExpand"
+                                    ResourceId="ic_down"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="20" />
+
+                            </Grid>
+                        </cake:PancakeView>
+                    </xct:Expander.Header>
+
+                    <Grid HorizontalOptions="FillAndExpand" RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <ScrollView>
+                            <Grid x:Name="DetailsView" IsVisible="False">
+                                <cake:PancakeView>
+                                    <StackLayout Padding="16" BackgroundColor="#7F000000">
+                                        <Label
+                                            FontFamily="MontRegular"
+                                            FontSize="15"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Vinde Espírito Santo, enchei os corações dos vossos fiéis e acendei neles o fogo do Vosso Amor. Enviai o Vosso Espírito e tudo será criado e renovareis a face da terra."
+                                            TextColor="White"
+                                            VerticalTextAlignment="Center" />
+                                        <Label
+                                            FontFamily="MontBlack"
+                                            FontSize="15"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Oremos: "
+                                            TextColor="White"
+                                            VerticalTextAlignment="Center" />
+                                        <Label
+                                            FontFamily="MontRegular"
+                                            FontSize="15"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Oremos: Ó Deus que instruíste os corações dos vossos fiéis, com a luz do Espírito Santo, fazei que apreciemos retamente todas as coisas segundo o mesmo Espírito e gozemos da sua consolação.Por Cristo Senhor Nosso"
+                                            TextColor="White"
+                                            VerticalTextAlignment="Center" />
+                                        <Label
+                                            FontFamily="MontBlack"
+                                            FontSize="15"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Amém! "
+                                            TextColor="White"
+                                            VerticalTextAlignment="Center" />
+                                    </StackLayout>
+                                </cake:PancakeView>
+                            </Grid>
+
+                        </ScrollView>
+
+
+                    </Grid>
+                </xct:Expander>
+
+                <!--  OFERECIMENTO  -->
+
+                <xct:Expander
+                    x:Name="audioExpander"
+                    Grid.Row="1"
+                    CollapseAnimationLength="500"
+                    Tapped="audioExpander_Tapped"
+                    VerticalOptions="StartAndExpand">
+                    <xct:Expander.Header>
+                        <cake:PancakeView BackgroundColor="#7F000000" CornerRadius="10,10,0,0">
+                            <Grid ColumnDefinitions="*, Auto" HorizontalOptions="FillAndExpand">
+                                <StackLayout
+                                    Grid.Column="0"
+                                    Margin="20"
+                                    HorizontalOptions="Start"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center">
+                                    <local:SvgImageControl ResourceId="ic_offer" />
+                                    <Label
+                                        Margin="8,0,0,0"
+                                        FontFamily="MontRegular"
+                                        FontSize="12"
+                                        Text="Oferecimento do dia(7h45m)"
+                                        TextColor="White"
+                                        VerticalOptions="Center" />
+                                </StackLayout>
+                                <local:SvgImageControl
+                                    Margin="0,0,8,0"
+                                    HeightRequest="20"
+                                    HorizontalOptions="EndAndExpand"
+                                    ResourceId="ic_down"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="20" />
+
+                            </Grid>
+                        </cake:PancakeView>
+                    </xct:Expander.Header>
+
+                    <Grid HorizontalOptions="FillAndExpand" RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <ScrollView>
+                            <Grid x:Name="AudioView" IsVisible="False">
+                                <StackLayout Padding="16" BackgroundColor="#7F000000">
+                                    <Label
+                                        FontFamily="MontRegular"
+                                        FontSize="15"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Ofereço- Vos, ó meu Deus, em união com o Santíssimo Coração de Jesus, por meio do Coração Imaculado de Maria, as orações, obras, sofrimentos e alegrias deste dia, em reparação de nossas ofensas, e por todas as intenções pelas quais o mesmo divino Coração está continuamente intercedendo e sacrificando-se em nossos altares. Vos ofereço de modo particular:"
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        FontAttributes="Italic"
+                                        FontFamily="MontBlack"
+                                        FontSize="15"
+                                        HorizontalTextAlignment="Center"
+                                        Text="...(intenções pessoais)..."
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        FontFamily="MontRegular"
+                                        FontSize="15"
+                                        HorizontalTextAlignment="Center"
+                                        Text="E pelo aumento e santificação das vocações sacerdotais, reliosos e matrimoniais."
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        FontFamily="MontBlack"
+                                        FontSize="15"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Amém! "
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                </StackLayout>
+                            </Grid>
+
+                        </ScrollView>
+                    </Grid>
+                </xct:Expander>
+
+                <!--  ANGELUS  -->
+                <xct:Expander
+                    Grid.Row="2"
+                    CollapseAnimationLength="500"
+                    Tapped="workoutExpander_Tapped"
+                    VerticalOptions="StartAndExpand">
+                    <xct:Expander.Header>
+                        <cake:PancakeView BackgroundColor="#7F000000" CornerRadius="10,10,0,0">
+                            <Grid ColumnDefinitions="*, Auto" HorizontalOptions="FillAndExpand">
+                                <StackLayout
+                                    Grid.Column="0"
+                                    Margin="20"
+                                    HorizontalOptions="Start"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center">
+                                    <local:SvgImageControl ResourceId="ic_angelus" />
+                                    <Label
+                                        Margin="8,0,0,0"
+                                        FontFamily="MontRegular"
+                                        FontSize="12"
+                                        Text="Angelus (meio-dia)"
+                                        TextColor="White"
+                                        VerticalOptions="Center" />
+                                </StackLayout>
+                                <local:SvgImageControl
+                                    Margin="0,0,8,0"
+                                    HeightRequest="20"
+                                    HorizontalOptions="EndAndExpand"
+                                    ResourceId="ic_down"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="20" />
+
+                            </Grid>
+                        </cake:PancakeView>
+                    </xct:Expander.Header>
+
+                    <Grid HorizontalOptions="FillAndExpand" RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <ScrollView>
+                            <Grid x:Name="WorkoutView" IsVisible="False">
+                                <StackLayout Padding="16" BackgroundColor="#7F000000">
+                                    <Label
+                                        FontFamily="MontBlack"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="O Anjo do Senhor anunciou a Maria"
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        FontAttributes="Italic"
+                                        FontFamily="MontRegular"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="R: e ela concebeu do Espírito Santo"
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        Margin="16,0,0,0"
+                                        FontAttributes="Italic"
+                                        FontFamily="MontBlack"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Ave Maria cheia de graça..."
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+
+                                    <Label
+                                        Margin="0,16,0,0"
+                                        FontFamily="MontBlack"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Eis aqui a serva do Senhor."
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        FontAttributes="Italic"
+                                        FontFamily="MontRegular"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="R: Faça-se em mim segundo a vossa palavra."
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        Margin="16,0,0,0"
+                                        FontAttributes="Italic"
+                                        FontFamily="MontBlack"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Ave Maria cheia de graça..."
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+
+                                    <Label
+                                        Margin="0,16,0,0"
+                                        FontFamily="MontBlack"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="e o Verbo se fez carne"
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        FontAttributes="Italic"
+                                        FontFamily="MontRegular"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="R:  E habitou entre nós."
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        Margin="16,0,0,0"
+                                        FontAttributes="Italic"
+                                        FontFamily="MontBlack"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Ave Maria cheia de graça..."
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+
+                                    <Label
+                                        Margin="24,0,0,0"
+                                        FontAttributes="Italic"
+                                        FontFamily="MontBlack"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Oremos"
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        Margin="16,0,0,0"
+                                        FontAttributes="Italic"
+                                        FontFamily="MontRegular"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Infundi, Senhor, nós Vos pedimos, em nossas almas a vossa graça, para que nós que conhecemos pela Anunciação do Anjo a Encarnação de Jesus Cristo, vosso Filho, cheguemos por sua Paixão  e sua Cruz à Glória da Ressurreição. Pelo mesmo Jesus Cristo, Senhor nosso."
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        Margin="16,0,0,0"
+                                        FontAttributes="Italic"
+                                        FontFamily="MontBlack"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Amém"
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                </StackLayout>
+                            </Grid>
+
+                        </ScrollView>
+                    </Grid>
+                </xct:Expander>
+
+                <!--  COROA DA MISERICORDIA  -->
+                <xct:Expander
+                    Grid.Row="3"
+                    CollapseAnimationLength="500"
+                    Tapped="penanceExpander_Tapped"
+                    VerticalOptions="StartAndExpand">
+                    <xct:Expander.Header>
+                        <cake:PancakeView BackgroundColor="#7F000000" CornerRadius="10,10,0,0">
+                            <Grid ColumnDefinitions="*, Auto" HorizontalOptions="FillAndExpand">
+                                <StackLayout
+                                    Grid.Column="0"
+                                    Margin="20"
+                                    HorizontalOptions="Start"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center">
+                                    <local:SvgImageControl ResourceId="ic_corona_mercy" />
+                                    <Label
+                                        Margin="8,0,0,0"
+                                        FontFamily="MontRegular"
+                                        FontSize="12"
+                                        Text="Coroa da misericórdia(15h)"
+                                        TextColor="White"
+                                        VerticalOptions="Center" />
+                                </StackLayout>
+                                <local:SvgImageControl
+                                    Margin="0,0,8,0"
+                                    HeightRequest="20"
+                                    HorizontalOptions="EndAndExpand"
+                                    ResourceId="ic_down"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="20" />
+
+                            </Grid>
+                        </cake:PancakeView>
+                    </xct:Expander.Header>
+
+                    <Grid HorizontalOptions="FillAndExpand" RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <ScrollView>
+                            <Grid x:Name="PenanceView" IsVisible="False">
+                                <StackLayout Padding="16" BackgroundColor="#7F000000">
+                                    <Label
+                                        FontFamily="MontBlack"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Sinal da Cruz"
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        FontFamily="MontRegular"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Pai Nosso que estais no céu..."
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        FontAttributes="Italic"
+                                        FontFamily="MontRegular"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Ave Maria cheia de graça..."
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        Margin="16,0,0,0"
+                                        FontAttributes="Italic"
+                                        FontFamily="MontRegular"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Creio em Deus Pai..."
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+
+                                    <cake:PancakeView Margin="0,16,0,0" CornerRadius="10">
+                                        <StackLayout Padding="8">
+
+                                            <Label
+                                                Margin="16,0,16,16"
+                                                FontAttributes="Italic"
+                                                FontFamily="MontRegular"
+                                                FontSize="12"
+                                                HorizontalTextAlignment="Center"
+                                                Text="(5 dezenas)"
+                                                TextColor="White"
+                                                VerticalTextAlignment="Center" />
+
+                                            <Label
+                                                Margin="16,0,0,0"
+                                                FontAttributes="Italic"
+                                                FontFamily="MontRegular"
+                                                FontSize="12"
+                                                HorizontalTextAlignment="Center"
+                                                Text="Eterno Pai, eu Vos ofereço o Corpo e Sangue, a Alma e Divindade de Vosso diletíssimo Filho, Nosso Senhor Jesus Cristo, em expiação dos nossos pecados e do mundo inteiro."
+                                                TextColor="White"
+                                                VerticalTextAlignment="Center" />
+
+                                            <Label
+                                                Margin="16,0,0,16"
+                                                FontAttributes="Italic"
+                                                FontFamily="MontLight"
+                                                FontSize="12"
+                                                HorizontalTextAlignment="Center"
+                                                Text="Por Sua dolorosa Paixão, tenha misericórdia de nós e do mundo inteiro.(10x)"
+                                                TextColor="White"
+                                                VerticalTextAlignment="Center" />
+
+
+                                        </StackLayout>
+                                        <cake:PancakeView.Border>
+                                            <cake:Border
+                                                DrawingStyle="Outside"
+                                                Thickness="1"
+                                                Color="White" />
+                                        </cake:PancakeView.Border>
+                                    </cake:PancakeView>
+
+                                    <Label
+                                        Margin="0,16,0,0"
+                                        FontFamily="MontBlack"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Deus Santo, Deus Forte, Deus Imortal, tenha piedade de nós e do mundo inteiro.(3x)"
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+
+                                    <Label
+                                        Margin="0,16,0,0"
+                                        FontFamily="MontRegular"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Deus eterno cuja misericórdia é infinita e em quem os tesouros da compaixão são inesgotáveis, olhe-nos bondosamente e aumente-nos sua misericórdia. Enfim, de que nos momentos difícei nem vamos nos desesperar, nem vamos nos desanimar, mas com a máxima confiança vamos nos submeter à sua santa vontade, que é o amor e a própria misericórdia."
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+
+                                </StackLayout>
+                            </Grid>
+
+                        </ScrollView>
+                    </Grid>
+                </xct:Expander>
+
+                <!--  MAGNIFICAT  -->
+                <xct:Expander
+                    Grid.Row="4"
+                    Margin="0,0,0,0"
+                    CollapseAnimationLength="500"
+                    Tapped="commentExpander_Tapped"
+                    VerticalOptions="StartAndExpand">
+                    <xct:Expander.Header>
+                        <cake:PancakeView BackgroundColor="#7F000000" CornerRadius="10,10,0,0">
+                            <Grid ColumnDefinitions="*, Auto" HorizontalOptions="FillAndExpand">
+                                <StackLayout
+                                    Grid.Column="0"
+                                    Margin="20"
+                                    HorizontalOptions="Start"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center">
+                                    <local:SvgImageControl ResourceId="ic_virgin_mary" />
+                                    <Label
+                                        Margin="8,0,0,0"
+                                        FontFamily="MontRegular"
+                                        FontSize="12"
+                                        Text="Magnificat(18h)"
+                                        TextColor="White"
+                                        VerticalOptions="Center" />
+                                </StackLayout>
+                                <local:SvgImageControl
+                                    Margin="0,0,8,0"
+                                    HeightRequest="20"
+                                    HorizontalOptions="EndAndExpand"
+                                    ResourceId="ic_down"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="20" />
+
+                            </Grid>
+                        </cake:PancakeView>
+                    </xct:Expander.Header>
+
+                    <Grid HorizontalOptions="FillAndExpand" RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <ScrollView>
+                            <Grid x:Name="CommentView" IsVisible="False">
+                                <StackLayout Padding="16" BackgroundColor="#7F000000">
+                                    <Label
+                                        FontFamily="MontBlack"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="O Poderoso fez por mim maravilhas* e Santo é o seu nome!"
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+
+                                    <Label
+                                        FontFamily="MontRegular"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="A minh'alma engrandece ao Senhor* e se alegrou o meu espírito em Deus meu Salvador; pois Ele viu a pequenez de sua serva*, desde agora as gerações hão de chamar-me de Bendita."
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        FontFamily="MontBlack"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="O Poderoso fez por mim maravilhas* e Santo é o seu nome!"
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        FontFamily="MontRegular"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Seu amor, de geração em geração*, chega a todos que o respeitam; demonstrou o poder de seu braço*, dispersou os orgulhosos; derrubou os poderosos de seus tronos* e os humildes exaltou;"
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        FontFamily="MontRegular"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="De bens saciou os famintos* e despediu sem nada os ricos."
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        FontFamily="MontRegular"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Acolheu Israel, seu servidor*, fiel ao seu amor, como havia prometido aos nossos pais* em favor de Abraão e de seus filhos, para sempre."
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+
+                                    <Label
+                                        FontFamily="MontMedium"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Glória ao Pai, e ao Filho e ao Espírito Santo. *Assim como era no príncipio, agora e sempre, e por todos os séculos dos séculos. Amém!"
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+
+                                    <Label
+                                        FontFamily="MontBlack"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="O Poderoso fez por mim maravilhas* e Santo é o seu nome!"
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                </StackLayout>
+                            </Grid>
+
+                        </ScrollView>
+                    </Grid>
+                </xct:Expander>
+
+                <!--  EXAME CONSCIENCIA  -->
+                <xct:Expander
+                    Grid.Row="5"
+                    Margin="0,0,0,50"
+                    CollapseAnimationLength="500"
+                    Tapped="commentExpander_Tapped2"
+                    VerticalOptions="StartAndExpand">
+                    <xct:Expander.Header>
+                        <cake:PancakeView BackgroundColor="#7F000000" CornerRadius="10,10,0,0">
+                            <Grid ColumnDefinitions="*, Auto" HorizontalOptions="FillAndExpand">
+                                <StackLayout
+                                    Grid.Column="0"
+                                    Margin="20"
+                                    HorizontalOptions="Start"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center">
+                                    <local:SvgImageControl ResourceId="ic_exame" />
+                                    <Label
+                                        Margin="8,0,0,0"
+                                        FontFamily="MontRegular"
+                                        FontSize="12"
+                                        Text="Exame de consciência(21h)"
+                                        TextColor="White"
+                                        VerticalOptions="Center" />
+                                </StackLayout>
+                                <local:SvgImageControl
+                                    Margin="0,0,8,0"
+                                    HeightRequest="20"
+                                    HorizontalOptions="EndAndExpand"
+                                    ResourceId="ic_down"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="20" />
+
+                            </Grid>
+                        </cake:PancakeView>
+                    </xct:Expander.Header>
+
+                    <Grid HorizontalOptions="FillAndExpand" RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <ScrollView>
+                            <Grid x:Name="ExameView" IsVisible="False">
+                                <StackLayout Padding="16" BackgroundColor="#7F000000">
+                                    <Label
+                                        FontFamily="MontBlack"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Sinal da Santa Cruz"
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        FontFamily="MontBlack"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Pelo sinal ✠ da Santa Cruz, livre-nos Deus ✠ Nosso Senhor, dos nosso inimigos. Em nome do Pai, do Filho, e do Espírito Santo. ✠ Amém."
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+
+                                    <Label
+                                        FontFamily="MontBlack"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="T/. Meu Deus, dai-me Luz para conhecer os pecados que hoje cometi, as suas causas e os meios de os evitar."
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+
+                                    <Label
+                                        FontFamily="MontLight"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="(Momento de exame particular em silêncio)"
+                                        TextColor="PaleVioletRed"
+                                        VerticalTextAlignment="Center" />
+
+
+                                    <Label
+                                        FontFamily="MontBlack"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Start"
+                                        Text="Deveres para com Deus"
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        FontFamily="MontRegular"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Start"
+                                        Text="Lembrei-me de Deus durante o dia, oferecendo-lhe meus trabalhos, estudos e sofrimentos? Busquei conhecer a Deus, lendo a Bíblia e estudando o catecismo? Fiquei com vergonha de Deus ou da minha fé, em algum momento? Rezei com pausa e atenção? Em tudo busquei fazer a vontade de Deus? Agi como Jesus agiria?"
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+
+
+                                    <Label
+                                        FontFamily="MontBlack"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Start"
+                                        Text="Deveres para com o próximo"
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        FontFamily="MontRegular"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Start"
+                                        Text="Tratei os outros com dureza ou desprezo? Tive a preocupação de ajudar as pessoas? Faltei com a caridade com alguém? Perdi a paciência? Falei ou pensei mal de alguém? Rezei por todos, para que se salvem? Falei de Deus para alguém? Fiquei reclamando dos defeitos dos outros? Fiquei com raiva de alguém? Suportei com paciência os defeitos do próximo? Soube perdoar? Obedeci aos meus pais e superiores? Respeitei as pessoas mais velhas? Fiz algum ato de caridade para com meu próximo? Procurei tornar-lhe a vida mais agradável e feliz?"
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+
+                                    <Label
+                                        FontFamily="MontBlack"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Start"
+                                        Text="Deveres para comigo"
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        FontFamily="MontRegular"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Start"
+                                        Text="Me esforcei para fazer a vontade de Deus? Fui preguiçoso? Cumpri todos os meus deveres e tarefas? Esforcei-me para vencer os meus defeitos? Pedi a Deus para aumentar em mim todas as virtudes? Lutei pela minha própria santificação? Deixe-me levar por sentimentos de orgulhos, vaidade e sensualidade? Esforcei-me por arrancar meu defeito dominante? Pedi perdão de minhas faltas ou procurei escondê-las e justificá-las? "
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+
+
+
+                                    <Label
+                                        FontFamily="MontMedium"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Start"
+                                        Text="Estabeleça alguns bons propósitos para melhorar e análise a cada dia o cumprimento ou não deles."
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+
+                                    <Label
+                                        Margin="0,16,0,0"
+                                        FontFamily="MontBlack"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Start"
+                                        Text="Oração pela pureza"
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        FontFamily="MontRegular"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Start"
+                                        Text="Oh Maria, Virgem antes, durante e depois do parto, fazei-me pura e casta. (3 vezes)&#x0a;Em honra da virgindade de Nossa Senhora antes do parto, Ave Maria.&#x0a;Em honra da virgindade de Nossa Senhora durante o parto, Ave Maria.&#x0a;Em honra da virgindade de Nossa Senhora depois do parto, Ave Maria.&#x0a;Bendita e louvada seja, a Santa e Imaculada Conceição, da Bem-Aventurada sempre Virgem Maria, Mãe de Deus. (3 vezes)"
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+
+
+                                    <Label
+                                        Margin="0,16,0,0"
+                                        FontFamily="MontBlack"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Start"
+                                        Text="Jesus vivendo em Maria"
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        FontFamily="MontRegular"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Start"
+                                        Text="Ó Jesus que viveis em Maria, vinde e vivei em vossos servos, no espírito de vossa santidade, na plenitude de vossa força, na perfeição de vossas vias, na verdade de vossas virtudes,  na comunhão de vossos mistérios; dominai sobre toda a potestade inimiga,   em vosso espírito para a glória do Pai. Amém."
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+
+
+                                    <Label
+                                        Margin="0,16,0,0"
+                                        FontFamily="MontBlack"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Start"
+                                        Text="Comunhão Espiritual"
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        FontFamily="MontRegular"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Start"
+                                        Text="Meu Deus creio firmemente em vossa presença na Eucaristia. Gostaria de receber-Vos agora realmente, mas como não posso, vinde, ao menos espiritualmente ao meu coração. Inflamai-me de Vosso ardor e fazei com que eu lute seriamente pela expansão de Vosso reino. Amém."
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+
+                                    <Label
+                                        Margin="0,16,0,0"
+                                        FontFamily="MontLight"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="(Silêncio)"
+                                        TextColor="PaleVioletRed"
+                                        VerticalTextAlignment="Center" />
+
+                                    <Label
+                                        Margin="0,16,0,0"
+                                        FontFamily="MontBlack"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Start"
+                                        Text="À vossa proteção"
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+                                    <Label
+                                        FontFamily="MontRegular"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Start"
+                                        Text="À vossa proteção recorremos, Santa Mãe de Deus. Não desprezeis as nossas súplicas em nossas necessidades, mas livrai-nos sempre de todos os perigos, ó virgem gloriosa e bendita. Amém"
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+
+                                    <Label
+                                        Margin="0,24,0,0"
+                                        FontFamily="MontMedium"
+                                        FontSize="12"
+                                        HorizontalTextAlignment="Center"
+                                        Text="Em nome do Pai, do Filho, e do Espírito Santo. ✠ Amém"
+                                        TextColor="White"
+                                        VerticalTextAlignment="Center" />
+
+                                </StackLayout>
+                            </Grid>
+
+                        </ScrollView>
+                    </Grid>
+                </xct:Expander>
+            </Grid>
+        </ScrollView>
+        <Label
+            Grid.Row="3"
+            FontFamily="MontBlack"
+            FontSize="12"
+            HorizontalOptions="CenterAndExpand"
+            HorizontalTextAlignment="Center"
+            Text="Desenvolvido por Novassat Systems"
+            TextColor="White"
+            VerticalOptions="CenterAndExpand"
+            VerticalTextAlignment="Center">
+            <Label.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <OnPlatform.Platforms>
+                        <On Platform="iOS" Value="0, 16, 0, 16" />
+                        <On Platform="Android" Value="0,16,0,50" />
+                    </OnPlatform.Platforms>
+                </OnPlatform>
+            </Label.Margin>
+        </Label>
+    </Grid>
+
+
+</ContentPage>

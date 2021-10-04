@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Core.AddCommentPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:cake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    BackgroundColor="Transparent">
+    <ScrollView>
+        <Grid
+            ColumnDefinitions="0.5*,9*,0.5*"
+            HorizontalOptions="FillAndExpand"
+            RowDefinitions="6*,4*"
+            VerticalOptions="FillAndExpand">
+            <cake:PancakeView
+                Grid.Row="0"
+                Grid.Column="1"
+                Margin="0,32,0,0"
+                BackgroundColor="#CCFFFFFF"
+                CornerRadius="24"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <Grid
+                    HorizontalOptions="FillAndExpand"
+                    RowDefinitions="*, Auto"
+                    VerticalOptions="FillAndExpand">
+
+                    <Editor
+                        x:Name="annotation"
+                        Margin="16"
+                        AutoSize="TextChanges"
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="FillAndExpand"
+                        Text="{Binding Annotation}"
+                        VerticalOptions="EndAndExpand" />
+                    <Grid
+                        Grid.Row="1"
+                        ColumnDefinitions="5*,5*"
+                        ColumnSpacing="0"
+                        HeightRequest="90"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand">
+
+                        <Label
+                            Grid.Column="0"
+                            BackgroundColor="#B2FF0000"
+                            FontFamily="MontRegular"
+                            FontSize="16"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Center"
+                            Text="Cancelar"
+                            TextColor="White"
+                            VerticalOptions="FillAndExpand"
+                            VerticalTextAlignment="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CancelCommand}" NumberOfTapsRequired="1" />
+                            </Label.GestureRecognizers>
+                        </Label>
+
+                        <Label
+                            Grid.Column="1"
+                            BackgroundColor="#B2008000"
+                            FontFamily="MontRegular"
+                            FontSize="16"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Center"
+                            Text="Salvar"
+                            TextColor="White"
+                            VerticalOptions="FillAndExpand"
+                            VerticalTextAlignment="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SaveCommand}" NumberOfTapsRequired="1" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Grid>
+                </Grid>
+            </cake:PancakeView>
+        </Grid>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,733 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Core.ReflectionDetailPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:cake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:local="clr-namespace:Core"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+    <Grid RowDefinitions="Auto,Auto,*,Auto">
+        <Image
+            Grid.RowSpan="4"
+            Aspect="AspectFill"
+            Opacity="1"
+            Source="ic_background" />
+        <Image
+            Grid.RowSpan="4"
+            Margin="0,0,0,-70"
+            Aspect="AspectFill"
+            Opacity="0.5"
+            Source="ic_aurora" />
+        <BoxView
+            Grid.RowSpan="4"
+            BackgroundColor="Black"
+            Opacity="0.5" />
+
+        <local:SvgImageControl
+            Grid.Row="1"
+            Margin="0,30,20,0"
+            Command="{Binding CloseModalCommand}"
+            HeightRequest="24"
+            HorizontalOptions="EndAndExpand"
+            ResourceId="ic_close"
+            VerticalOptions="StartAndExpand"
+            WidthRequest="24    " />
+
+        <Label
+            Grid.Row="1"
+            Margin="0,30,0,0"
+            FontFamily="MontBlack"
+            FontSize="40"
+            HorizontalOptions="Center"
+            TextColor="White"
+            VerticalOptions="Start">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="{Binding Item.Index}" />
+                    <Span Text="º " />
+                    <Span Text="dia" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+        <cake:PancakeView
+            Grid.Row="1"
+            Margin="16,100,16,0"
+            CornerRadius="10">
+
+            <Grid
+                Padding="8"
+                BackgroundColor="#7F000000"
+                ColumnDefinitions="*, Auto"
+                VerticalOptions="FillAndExpand">
+
+                <Label
+                    FontFamily="MontRegular"
+                    FontSize="16"
+                    HorizontalTextAlignment="Center"
+                    Text="{Binding Item.Title}"
+                    TextColor="White"
+                    VerticalOptions="Center" />
+
+                <cake:PancakeView
+                    Grid.Column="1"
+                    BackgroundColor="AliceBlue"
+                    CornerRadius="5"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    WidthRequest="60">
+                    <Grid RowDefinitions="Auto, Auto, Auto" RowSpacing="0">
+                        <Label
+                            Grid.Row="0"
+                            FontFamily="MontRegular"
+                            FontSize="30"
+                            HorizontalOptions="Center"
+                            Text="{Binding Item.DayofYear, StringFormat='{0:dd}'}"
+                            TextColor="DimGray"
+                            VerticalOptions="Start" />
+
+                        <Label
+                            Grid.Row="1"
+                            Margin="0,-8,0,0"
+                            FontFamily="MontRegular"
+                            FontSize="10"
+                            HorizontalOptions="Center"
+                            Text="{Binding Item.DayofYear, StringFormat='{0:MMMM}'}"
+                            TextColor="DimGray"
+                            VerticalOptions="Start" />
+
+                        <Label
+                            Grid.Row="2"
+                            FontFamily="MontRegular"
+                            FontSize="10"
+                            HorizontalOptions="Center"
+                            Text="{Binding Item.DayofYear, StringFormat='{0:dddd}'}"
+                            TextColor="DimGray"
+                            VerticalOptions="Start" />
+                    </Grid>
+                </cake:PancakeView>
+            </Grid>
+
+        </cake:PancakeView>
+        <cake:PancakeView
+            Grid.Row="2"
+            Margin="16,0"
+            Padding="30,0"
+            BackgroundColor="#000000"
+            CornerRadius="15"
+            HeightRequest="30"
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="Start">
+            <Label
+                FontAttributes="Italic"
+                HorizontalOptions="CenterAndExpand"
+                HorizontalTextAlignment="Center"
+                Text="Oração inicial"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+            <cake:PancakeView.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding OpenInitialPrayerCommand}" />
+            </cake:PancakeView.GestureRecognizers>
+        </cake:PancakeView>
+        <ScrollView Grid.Row="2" Margin="0,40,0,0">
+            <Grid Padding="16,0" RowDefinitions="Auto,Auto,Auto,Auto">
+
+                <!--  REFLEXÃO  -->
+                <xct:Expander
+                    x:Name="reflectionExpander"
+                    Grid.Row="0"
+                    CollapseAnimationLength="500"
+                    Tapped="reflectionExpander_Tapped"
+                    VerticalOptions="StartAndExpand">
+                    <xct:Expander.Header>
+                        <cake:PancakeView BackgroundColor="#7F000000" CornerRadius="10,10,0,0">
+                            <Grid ColumnDefinitions="*, Auto" HorizontalOptions="FillAndExpand">
+                                <StackLayout
+                                    Grid.Column="0"
+                                    Margin="20"
+                                    HorizontalOptions="Start"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center">
+                                    <local:SvgImageControl ResourceId="ic_reflection" />
+                                    <Label
+                                        Margin="8,0,0,0"
+                                        FontFamily="MontRegular"
+                                        FontSize="15"
+                                        Text="Reflexão"
+                                        TextColor="White"
+                                        VerticalOptions="Center" />
+                                </StackLayout>
+                                <local:SvgImageControl
+                                    Margin="0,0,8,0"
+                                    HeightRequest="20"
+                                    HorizontalOptions="EndAndExpand"
+                                    ResourceId="ic_down"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="20" />
+
+                            </Grid>
+                        </cake:PancakeView>
+                    </xct:Expander.Header>
+
+                    <Grid HorizontalOptions="FillAndExpand" RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <ScrollView>
+                            <Grid x:Name="DetailsView" IsVisible="False">
+                                <cake:PancakeView>
+                                    <StackLayout
+                                        Padding="16"
+                                        BackgroundColor="#7F000000"
+                                        BindableLayout.ItemsSource="{Binding Item.Chapters}">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid RowDefinitions="Auto,Auto,Auto">
+
+                                                    <Label
+                                                        Grid.Row="0"
+                                                        Margin="0,0,8,0"
+                                                        FontFamily="MontRegular"
+                                                        FontSize="18"
+                                                        HorizontalTextAlignment="Start"
+                                                        Opacity="0.9"
+                                                        Text="{Binding Description}"
+                                                        TextColor="White" />
+
+                                                    <StackLayout Grid.Row="1" BindableLayout.ItemsSource="{Binding SubChapters}">
+                                                        <BindableLayout.ItemTemplate>
+                                                            <DataTemplate>
+                                                                <Label
+                                                                    Margin="16,0,0,0"
+                                                                    FontAttributes="None"
+                                                                    FontFamily="MontRegular"
+                                                                    FontSize="16"
+                                                                    Text="{Binding .}"
+                                                                    TextColor="White" />
+                                                            </DataTemplate>
+                                                        </BindableLayout.ItemTemplate>
+                                                    </StackLayout>
+
+                                                    <Label
+                                                        Grid.Row="2"
+                                                        Margin="0,-8,0,0"
+                                                        FontFamily="MontThin"
+                                                        HorizontalOptions="End"
+                                                        Text="{Binding Reference}"
+                                                        TextColor="White" />
+                                                </Grid>
+
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </StackLayout>
+                                </cake:PancakeView>
+                            </Grid>
+
+                        </ScrollView>
+                        <Grid
+                            x:Name="ImageView"
+                            Grid.Row="1"
+                            IsVisible="False">
+                            <cake:PancakeView
+                                Padding="8"
+                                BackgroundColor="#7F2E8B57"
+                                CornerRadius="0,0,10,10">
+                                <Label
+                                    FontFamily="MontLight"
+                                    HorizontalOptions="FillAndExpand"
+                                    HorizontalTextAlignment="End"
+                                    Text="(P. D. Mézard, O. P., Meditationes ex Operibus S. Thomae.)"
+                                    TextColor="White"
+                                    VerticalOptions="FillAndExpand" />
+
+                            </cake:PancakeView>
+                        </Grid>
+
+                    </Grid>
+                </xct:Expander>
+
+                <!--  AUDIO  -->
+
+                <xct:Expander
+                    x:Name="audioExpander"
+                    Grid.Row="1"
+                    CollapseAnimationLength="500"
+                    Tapped="audioExpander_Tapped"
+                    VerticalOptions="StartAndExpand">
+                    <xct:Expander.Header>
+                        <cake:PancakeView BackgroundColor="#7F000000" CornerRadius="10,10,0,0">
+                            <Grid ColumnDefinitions="*, Auto" HorizontalOptions="FillAndExpand">
+                                <StackLayout
+                                    Grid.Column="0"
+                                    Margin="20"
+                                    HorizontalOptions="Start"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center">
+                                    <local:SvgImageControl ResourceId="ic_audio" />
+                                    <Label
+                                        Margin="8,0,0,0"
+                                        FontFamily="MontRegular"
+                                        FontSize="15"
+                                        Text="Audio"
+                                        TextColor="White"
+                                        VerticalOptions="Center" />
+                                </StackLayout>
+                                <local:SvgImageControl
+                                    Margin="0,0,8,0"
+                                    HeightRequest="20"
+                                    HorizontalOptions="EndAndExpand"
+                                    ResourceId="ic_down"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="20" />
+
+                            </Grid>
+                        </cake:PancakeView>
+                    </xct:Expander.Header>
+
+                    <Grid HorizontalOptions="FillAndExpand" RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <ScrollView>
+                            <Grid x:Name="AudioView" IsVisible="False">
+                                <cake:PancakeView>
+                                    <Grid>
+                                        <Grid
+                                            Padding="16"
+                                            BackgroundColor="#7F000000"
+                                            ColumnDefinitions="Auto,*"
+                                            HeightRequest="50"
+                                            IsVisible="{Binding ShowControls, Converter={StaticResource inverseBoolean}}">
+                                            <local:SvgImageControl
+                                                Margin="8,0,16,0"
+                                                HorizontalOptions="Start"
+                                                ResourceId="ic_download"
+                                                VerticalOptions="Center"
+                                                WidthAndHeight="24" />
+                                            <Label
+                                                Grid.Column="1"
+                                                FontFamily="MontLight"
+                                                HorizontalOptions="Start"
+                                                HorizontalTextAlignment="Center"
+                                                Text="Baixar o arquivo"
+                                                TextColor="White"
+                                                VerticalOptions="Center"
+                                                VerticalTextAlignment="Center" />
+                                            <Grid.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding DownloadAudioCommand}" NumberOfTapsRequired="1" />
+                                            </Grid.GestureRecognizers>
+                                        </Grid>
+                                        <Grid
+                                            Padding="16"
+                                            BackgroundColor="#7F000000"
+                                            ColumnDefinitions="5*,5*"
+                                            HeightRequest="50"
+                                            IsVisible="{Binding ShowControls}">
+                                            <local:SvgImageControl
+                                                Grid.Column="0"
+                                                HorizontalOptions="CenterAndExpand"
+                                                ResourceId="ic_play"
+                                                WidthAndHeight="30">
+                                                <local:SvgImageControl.Triggers>
+                                                    <DataTrigger
+                                                        Binding="{Binding IsPlaying}"
+                                                        TargetType="local:SvgImageControl"
+                                                        Value="True">
+                                                        <Setter Property="ResourceId" Value="ic_pause" />
+                                                    </DataTrigger>
+                                                </local:SvgImageControl.Triggers>
+                                            </local:SvgImageControl>
+                                            <BoxView
+                                                Grid.Column="0"
+                                                BackgroundColor="Transparent"
+                                                HorizontalOptions="FillAndExpand"
+                                                VerticalOptions="FillAndExpand">
+                                                <BoxView.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding PlayOrPauseAudioCommand}" NumberOfTapsRequired="1" />
+                                                </BoxView.GestureRecognizers>
+                                            </BoxView>
+                                            <local:SvgImageControl
+                                                Grid.Column="1"
+                                                HorizontalOptions="CenterAndExpand"
+                                                ResourceId="ic_stop"
+                                                WidthAndHeight="30" />
+                                            <BoxView
+                                                Grid.Column="1"
+                                                BackgroundColor="Transparent"
+                                                HorizontalOptions="FillAndExpand"
+                                                VerticalOptions="FillAndExpand">
+                                                <BoxView.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding StopAudioCommand}" NumberOfTapsRequired="1" />
+                                                </BoxView.GestureRecognizers>
+                                            </BoxView>
+                                        </Grid>
+                                    </Grid>
+                                </cake:PancakeView>
+                            </Grid>
+
+                        </ScrollView>
+                    </Grid>
+                </xct:Expander>
+
+                <!--  WORKOUT  -->
+                <xct:Expander
+                    Grid.Row="2"
+                    CollapseAnimationLength="500"
+                    Tapped="workoutExpander_Tapped"
+                    VerticalOptions="StartAndExpand">
+                    <xct:Expander.Header>
+                        <cake:PancakeView BackgroundColor="#7F000000" CornerRadius="10,10,0,0">
+                            <Grid ColumnDefinitions="*, Auto" HorizontalOptions="FillAndExpand">
+                                <StackLayout
+                                    Grid.Column="0"
+                                    Margin="20"
+                                    HorizontalOptions="Start"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center">
+                                    <local:SvgImageControl ResourceId="ic_workout" />
+                                    <Label
+                                        Margin="8,0,0,0"
+                                        FontFamily="MontRegular"
+                                        FontSize="15"
+                                        Text="Ativ. física recomendada"
+                                        TextColor="White"
+                                        VerticalOptions="Center" />
+                                </StackLayout>
+                                <local:SvgImageControl
+                                    Margin="0,0,8,0"
+                                    HeightRequest="20"
+                                    HorizontalOptions="EndAndExpand"
+                                    ResourceId="ic_down"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="20" />
+
+                            </Grid>
+                        </cake:PancakeView>
+                    </xct:Expander.Header>
+
+                    <Grid HorizontalOptions="FillAndExpand" RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <ScrollView>
+                            <Grid x:Name="WorkoutView" IsVisible="False">
+                                <cake:PancakeView>
+                                    <Grid BackgroundColor="#7F000000" RowDefinitions="*,Auto">
+                                        <StackLayout Padding="16" BindableLayout.ItemsSource="{Binding Item.Workouts}">
+                                            <BindableLayout.ItemTemplate>
+                                                <DataTemplate>
+                                                    <cake:PancakeView
+                                                        Margin="0,16,0,0"
+                                                        Padding="20"
+                                                        CornerRadius="10">
+                                                        <Grid RowDefinitions="Auto,Auto,Auto" RowSpacing="0">
+                                                            <Label
+                                                                Grid.Row="0"
+                                                                FontFamily="MontRegular"
+                                                                FontSize="18"
+                                                                Text="{Binding Name}"
+                                                                TextColor="White" />
+                                                            <Label
+                                                                Grid.Row="1"
+                                                                Margin="0,16"
+                                                                FontFamily="MontRegular"
+                                                                FontSize="14"
+                                                                HorizontalOptions="Start"
+                                                                Text="{Binding Prescrition}"
+                                                                TextColor="White" />
+
+                                                            <StackLayout
+                                                                Grid.Row="2"
+                                                                BindableLayout.ItemsSource="{Binding Observations}"
+                                                                VerticalOptions="StartAndExpand">
+                                                                <BindableLayout.ItemTemplate>
+                                                                    <DataTemplate>
+
+                                                                        <Label
+                                                                            FontFamily="MontLight"
+                                                                            FontSize="14"
+                                                                            HorizontalOptions="StartAndExpand"
+                                                                            Text="{Binding .}"
+                                                                            TextColor="White" />
+                                                                    </DataTemplate>
+                                                                </BindableLayout.ItemTemplate>
+                                                            </StackLayout>
+                                                        </Grid>
+                                                        <cake:PancakeView.Border>
+                                                            <cake:Border
+                                                                DrawingStyle="Outside"
+                                                                Thickness="1"
+                                                                Color="White" />
+                                                        </cake:PancakeView.Border>
+                                                    </cake:PancakeView>
+
+                                                </DataTemplate>
+                                            </BindableLayout.ItemTemplate>
+                                        </StackLayout>
+                                        <Label
+                                            Grid.Row="1"
+                                            Padding="16"
+                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Baixar PDF"
+                                            TextColor="White"
+                                            IsVisible="{Binding ShowOpenPDF, Converter={StaticResource inverseBoolean}}"
+                                            VerticalOptions="CenterAndExpand"
+                                            VerticalTextAlignment="Center">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding DownloadPdfCommand}" NumberOfTapsRequired="1" />
+                                            </Label.GestureRecognizers>
+                                        </Label>
+
+                                        <Label
+                                            Grid.Row="1"
+                                            Padding="16"
+                                            HorizontalOptions="CenterAndExpand"
+                                            HorizontalTextAlignment="Center"
+                                            Text="Ver exercícios em PDF"
+                                            TextColor="White"
+                                            IsVisible="{Binding ShowOpenPDF}"
+                                            VerticalOptions="CenterAndExpand"
+                                            VerticalTextAlignment="Center">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding ShowExercisesCommand}" NumberOfTapsRequired="1" />
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                    </Grid>
+                                </cake:PancakeView>
+                            </Grid>
+
+                        </ScrollView>
+                    </Grid>
+                </xct:Expander>
+
+                <!--  PENITENCIA  -->
+                <xct:Expander
+                    Grid.Row="3"
+                    CollapseAnimationLength="500"
+                    Tapped="penanceExpander_Tapped"
+                    VerticalOptions="StartAndExpand">
+                    <xct:Expander.Header>
+                        <cake:PancakeView BackgroundColor="#7F000000" CornerRadius="10,10,0,0">
+                            <Grid ColumnDefinitions="*, Auto" HorizontalOptions="FillAndExpand">
+                                <StackLayout
+                                    Grid.Column="0"
+                                    Margin="20"
+                                    HorizontalOptions="Start"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center">
+                                    <local:SvgImageControl ResourceId="ic_penance" />
+                                    <Label
+                                        Margin="8,0,0,0"
+                                        FontFamily="MontRegular"
+                                        FontSize="15"
+                                        Text="Penitência recomendada"
+                                        TextColor="White"
+                                        VerticalOptions="Center" />
+                                </StackLayout>
+                                <local:SvgImageControl
+                                    Margin="0,0,8,0"
+                                    HeightRequest="20"
+                                    HorizontalOptions="EndAndExpand"
+                                    ResourceId="ic_down"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="20" />
+
+                            </Grid>
+                        </cake:PancakeView>
+                    </xct:Expander.Header>
+
+                    <Grid HorizontalOptions="FillAndExpand" RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <ScrollView>
+                            <Grid x:Name="PenanceView" IsVisible="False">
+                                <cake:PancakeView>
+                                    <StackLayout
+                                        Padding="16"
+                                        BackgroundColor="#7F000000"
+                                        BindableLayout.ItemsSource="{Binding Item.Penance}">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+                                                <cake:PancakeView
+                                                    Margin="0,16,0,0"
+                                                    Padding="16"
+                                                    CornerRadius="10">
+                                                    <Label
+                                                        FontFamily="MontRegular"
+                                                        FontSize="18"
+                                                        Text="{Binding .}"
+                                                        TextColor="White" />
+                                                    <cake:PancakeView.Border>
+                                                        <cake:Border
+                                                            DrawingStyle="Outside"
+                                                            Thickness="1"
+                                                            Color="White" />
+                                                    </cake:PancakeView.Border>
+                                                </cake:PancakeView>
+
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </StackLayout>
+                                </cake:PancakeView>
+                            </Grid>
+
+                        </ScrollView>
+                    </Grid>
+                </xct:Expander>
+
+                <!--  ANOTAÇÃO  -->
+                <xct:Expander
+                    Grid.Row="4"
+                    Margin="0,0,0,50"
+                    CollapseAnimationLength="500"
+                    Tapped="commentExpander_Tapped"
+                    VerticalOptions="StartAndExpand">
+                    <xct:Expander.Header>
+                        <cake:PancakeView BackgroundColor="#7F000000" CornerRadius="10,10,0,0">
+                            <Grid ColumnDefinitions="*, Auto" HorizontalOptions="FillAndExpand">
+                                <StackLayout
+                                    Grid.Column="0"
+                                    Margin="20"
+                                    HorizontalOptions="Start"
+                                    Orientation="Horizontal"
+                                    VerticalOptions="Center">
+                                    <local:SvgImageControl ResourceId="ic_comment" />
+                                    <Label
+                                        Margin="8,0,0,0"
+                                        FontFamily="MontRegular"
+                                        FontSize="15"
+                                        Text="Anotações"
+                                        TextColor="White"
+                                        VerticalOptions="Center" />
+                                </StackLayout>
+                                <local:SvgImageControl
+                                    Margin="0,0,8,0"
+                                    HeightRequest="20"
+                                    HorizontalOptions="EndAndExpand"
+                                    ResourceId="ic_down"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="20" />
+
+                            </Grid>
+                        </cake:PancakeView>
+                    </xct:Expander.Header>
+
+                    <Grid HorizontalOptions="FillAndExpand" RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <ScrollView>
+                            <Grid x:Name="CommentView" IsVisible="False">
+                                <cake:PancakeView BackgroundColor="#7F000000">
+                                    <Grid RowDefinitions="Auto, Auto" RowSpacing="0">
+                                        <StackLayout Grid.Row="0" Orientation="Horizontal">
+                                            <local:SvgImageControl
+                                                Margin="34,0,16,0"
+                                                HeightRequest="30"
+                                                ResourceId="ic_plus"
+                                                WidthRequest="30" />
+
+                                            <Label
+                                                FontFamily="MontRegular"
+                                                Text="Nova anotação"
+                                                TextColor="White"
+                                                VerticalOptions="CenterAndExpand" />
+                                            <StackLayout.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding AddCommentCommand}" NumberOfTapsRequired="1" />
+                                            </StackLayout.GestureRecognizers>
+                                        </StackLayout>
+                                        <StackLayout
+                                            Grid.Row="1"
+                                            Padding="16"
+                                            BindableLayout.ItemsSource="{Binding Item.Annotations}">
+                                            <BindableLayout.ItemTemplate>
+                                                <DataTemplate>
+
+                                                    <Grid RowDefinitions="Auto,Auto,Auto">
+                                                        <Label
+                                                            Grid.Row="0"
+                                                            Margin="34,0,8,0"
+                                                            FontFamily="MontThin"
+                                                            FontSize="12"
+                                                            Text="{Binding DateTime, StringFormat='{}{0:MM/dd/yyyy - h:mm tt}'}"
+                                                            TextColor="White" />
+                                                        <Label
+                                                            Grid.Row="1"
+                                                            Margin="34,0,8,0"
+                                                            FontFamily="MontLight"
+                                                            FontSize="18"
+                                                            HorizontalTextAlignment="Start"
+                                                            Opacity="0.9"
+                                                            Text="{Binding Description}"
+                                                            TextColor="White" />
+
+                                                        <StackLayout Grid.Row="1" BindableLayout.ItemsSource="{Binding SubChapters}">
+                                                            <BindableLayout.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <Label
+                                                                        Margin="16,0,0,0"
+                                                                        FontAttributes="None"
+                                                                        FontFamily="MontRegular"
+                                                                        FontSize="16"
+                                                                        Text="{Binding .}"
+                                                                        TextColor="White" />
+                                                                </DataTemplate>
+                                                            </BindableLayout.ItemTemplate>
+                                                        </StackLayout>
+
+                                                        <Label
+                                                            Grid.Row="2"
+                                                            Margin="0,-8,0,0"
+                                                            FontAttributes="Italic,Bold"
+                                                            HorizontalOptions="End"
+                                                            Text="{Binding Reference}"
+                                                            TextColor="White" />
+                                                        <Grid.GestureRecognizers>
+                                                            <TapGestureRecognizer />
+                                                        </Grid.GestureRecognizers>
+                                                    </Grid>
+
+                                                </DataTemplate>
+                                            </BindableLayout.ItemTemplate>
+                                            <StackLayout.Triggers>
+                                                <DataTrigger
+                                                    Binding="{Binding Item.Comments.Count}"
+                                                    TargetType="StackLayout"
+                                                    Value="0">
+                                                    <Setter Property="IsVisible" Value="False" />
+                                                </DataTrigger>
+                                            </StackLayout.Triggers>
+                                        </StackLayout>
+                                    </Grid>
+
+                                </cake:PancakeView>
+                            </Grid>
+
+                        </ScrollView>
+                    </Grid>
+                </xct:Expander>
+            </Grid>
+        </ScrollView>
+        <Label
+            Grid.Row="3"
+            Margin="0,0,0,16"
+            FontFamily="MontBlack"
+            FontSize="12"
+            HorizontalOptions="CenterAndExpand"
+            HorizontalTextAlignment="Center"
+            Text="Desenvolvido por Novassat Systems"
+            TextColor="White"
+            VerticalOptions="CenterAndExpand"
+            VerticalTextAlignment="Center" />
+    </Grid>
+
+
+</ContentPage>

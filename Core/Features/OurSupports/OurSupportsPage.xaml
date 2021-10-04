@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Core.OurSupportsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:cake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:ffTransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:local="clr-namespace:Core"
+    android:Application.WindowSoftInputModeAdjust="Resize"
+    NavigationPage.HasNavigationBar="False">
+    <ScrollView
+        x:Name="Root"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand">
+        <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,*">
+            <Image
+                Grid.RowSpan="2"
+                Grid.ColumnSpan="2"
+                Margin="0,0,0,0"
+                Aspect="AspectFill"
+                Opacity="1"
+                Source="ic_background_support" />
+            <Image
+                Grid.RowSpan="2"
+                Grid.ColumnSpan="2"
+                Margin="0,0,0,-70"
+                Aspect="AspectFill"
+                Opacity="0.2"
+                Source="ic_aurora.jpg" />
+
+            <BoxView
+                Grid.RowSpan="2"
+                Grid.ColumnSpan="2"
+                BackgroundColor="Black"
+                Opacity="0.7" />
+            <local:SvgImageControl
+                Grid.Row="0"
+                Grid.ColumnSpan="2"
+                Margin="0,40,20,0"
+                Command="{Binding CloseCommand}"
+                HeightRequest="24"
+                HorizontalOptions="EndAndExpand"
+                ResourceId="ic_close"
+                VerticalOptions="StartAndExpand"
+                WidthRequest="24    " />
+
+            <Label
+                Grid.Row="0"
+                Grid.ColumnSpan="2"
+                Margin="36,70,36,0"
+                FontFamily="MontBlack"
+                FontSize="35"
+                Text="Apoiadores"
+                TextColor="White"
+                VerticalOptions="StartAndExpand">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding OpenInstagram}"
+                        CommandParameter="alinebrasiloficial"
+                        NumberOfTapsRequired="1" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <CollectionView
+                x:Name="collection"
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Margin="36,16,36,0"
+                ItemsSource="{Binding Supporters}"
+                SelectionChangedCommand="{Binding OpenInstagram}"
+                SelectionChangedCommandParameter="{Binding SelectedItem.UserName, Source={x:Reference collection}}"
+                SelectionMode="Single"
+                VerticalOptions="StartAndExpand">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        HorizontalItemSpacing="8"
+                        Orientation="Vertical"
+                        Span="2"
+                        VerticalItemSpacing="8" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <cake:PancakeView
+                            BackgroundColor="#7F000000"
+                            CornerRadius="16"
+                            HeightRequest="200"
+                            WidthRequest="150">
+                            <Grid Padding="16" RowDefinitions="Auto, *">
+                                <Label
+                                    Grid.Row="0"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Text="{Binding Name}"
+                                    TextColor="White"
+                                    VerticalOptions="CenterAndExpand" />
+                                <ff:CachedImage
+                                    Grid.Row="1"
+                                    HeightRequest="100"
+                                    Source="{Binding Avatar}"
+                                    VerticalOptions="CenterAndExpand"
+                                    WidthRequest="100">
+                                    <ff:CachedImage.Transformations>
+                                        <ffTransformations:CircleTransformation />
+                                    </ff:CachedImage.Transformations>
+                                </ff:CachedImage>
+                            </Grid>
+                            <cake:PancakeView.Border>
+                                <cake:Border
+                                    DrawingStyle="Outside"
+                                    Thickness="1"
+                                    Color="White" />
+                            </cake:PancakeView.Border>
+                        </cake:PancakeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

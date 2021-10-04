@@ -1,0 +1,211 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Infrastructure\Helpers\**" />
+    <EmbeddedResource Remove="Infrastructure\Helpers\**" />
+    <None Remove="Infrastructure\Helpers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FirebaseDatabase.net" Version="4.0.5" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.1.0" />
+    <PackageReference Include="Plugin.LocalNotification" Version="5.2.0" />
+    <PackageReference Include="Xam.Plugin.SimpleAudioPlayer" Version="1.4.0" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.0.2" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1931" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="LiteDB" Version="5.0.10" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.1.0" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.2" />
+    <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Xamarin.Forms.BehaviorValidationPack" Version="1.1.1" />
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
+    <PackageReference Include="Acr.UserDialogs" Version="7.1.0.475" />
+    <PackageReference Include="Prism.DryIoc.Forms" Version="8.0.0.1909" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="Extenders\Controls\SearchToolBar.xaml" />
+    <EmbeddedResource Remove="Extenders\Controls\LoadingPage.xaml" />
+    <EmbeddedResource Remove="Features\1 - CreditCard\CreditCartView.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Extenders\Controls\NoRecordsFoundLabel.xaml.cs" />
+    <Compile Remove="Extenders\Controls\SearchToolBar.xaml.cs" />
+    <Compile Remove="Extenders\Controls\LoadingPage.xaml.cs" />
+    <Compile Remove="Features\Main\LimitPage.xaml.cs" />
+    <Compile Remove="Features\2 - Benefits\BenefitsView.xaml.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Extenders\Templates\" />
+    <Folder Include="Features\Base\" />
+    <Folder Include="Features\Dialog\" />
+    <Folder Include="Features\Main\" />
+    <Folder Include="Extenders\Effects\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="exercise.pdf" />
+    <None Remove="exerciseA.pdf" />
+    <None Remove="exerciseB.pdf" />
+    <None Remove="Font\MontserratBlack.ttf" />
+    <None Remove="Font\MontserratBold.ttf" />
+    <None Remove="Font\MontserratLight.ttf" />
+    <None Remove="Font\MontserratMedium.ttf" />
+    <None Remove="Font\MontserratRegular.ttf" />
+    <None Remove="Font\MontserratThin.ttf" />
+    <None Remove="Images\ellipse_camera.svg" />
+    <None Remove="Images\icon_navigation.svg" />
+    <None Remove="Images\ic_about_creator.svg" />
+    <None Remove="Images\ic_about_program.svg" />
+    <None Remove="Images\ic_angelus.svg" />
+    <None Remove="Images\ic_audio.svg" />
+    <None Remove="Images\ic_autem_logo.svg" />
+    <None Remove="Images\ic_checked.svg" />
+    <None Remove="Images\ic_close.svg" />
+    <None Remove="Images\ic_comment.svg" />
+    <None Remove="Images\ic_corona_mercy.svg" />
+    <None Remove="Images\ic_down.svg" />
+    <None Remove="Images\ic_download.svg" />
+    <None Remove="Images\ic_exame.svg" />
+    <None Remove="Images\ic_follow_us.svg" />
+    <None Remove="Images\ic_holy_spirit.svg" />
+    <None Remove="Images\ic_key.svg" />
+    <None Remove="Images\ic_menu.svg" />
+    <None Remove="Images\ic_offer.svg" />
+    <None Remove="Images\ic_our_supports.svg" />
+    <None Remove="Images\ic_pause.svg" />
+    <None Remove="Images\ic_penance.svg" />
+    <None Remove="Images\ic_play.svg" />
+    <None Remove="Images\ic_plus.svg" />
+    <None Remove="Images\ic_reflection.svg" />
+    <None Remove="Images\ic_rocket.svg" />
+    <None Remove="Images\ic_settings.svg" />
+    <None Remove="Images\ic_share.svg" />
+    <None Remove="Images\ic_stop.svg" />
+    <None Remove="Images\ic_unchecked.svg" />
+    <None Remove="Images\ic_user.svg" />
+    <None Remove="Images\ic_virgin_mary.svg" />
+    <None Remove="Images\ic_workout.svg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="exerciseA.pdf" />
+    <EmbeddedResource Include="exerciseB.pdf" />
+    <EmbeddedResource Include="Font\MontserratBlack.ttf" />
+    <EmbeddedResource Include="Font\MontserratBold.ttf" />
+    <EmbeddedResource Include="Font\MontserratLight.ttf" />
+    <EmbeddedResource Include="Font\MontserratMedium.ttf" />
+    <EmbeddedResource Include="Font\MontserratRegular.ttf" />
+    <EmbeddedResource Include="Font\MontserratThin.ttf" />
+    <EmbeddedResource Include="Images\ic_about_creator.svg" />
+    <EmbeddedResource Include="Images\ic_about_program.svg" />
+    <EmbeddedResource Include="Images\ic_angelus.svg" />
+    <EmbeddedResource Include="Images\ic_audio.svg" />
+    <EmbeddedResource Include="Images\ic_checked.svg" />
+    <EmbeddedResource Include="Images\ic_close.svg" />
+    <EmbeddedResource Include="Images\ic_comment.svg" />
+    <EmbeddedResource Include="Images\ic_corona_mercy.svg" />
+    <EmbeddedResource Include="Images\ic_down.svg" />
+    <EmbeddedResource Include="Images\ic_download.svg" />
+    <EmbeddedResource Include="Images\ic_exame.svg" />
+    <EmbeddedResource Include="Images\ic_follow_us.svg" />
+    <EmbeddedResource Include="Images\ic_holy_spirit.svg" />
+    <EmbeddedResource Include="Images\ic_key.svg" />
+    <EmbeddedResource Include="Images\ic_menu.svg" />
+    <EmbeddedResource Include="Images\ic_offer.svg" />
+    <EmbeddedResource Include="Images\ic_our_supports.svg" />
+    <EmbeddedResource Include="Images\ic_pause.svg" />
+    <EmbeddedResource Include="Images\ic_penance.svg" />
+    <EmbeddedResource Include="Images\ic_play.svg" />
+    <EmbeddedResource Include="Images\ic_plus.svg" />
+    <EmbeddedResource Include="Images\ic_reflection.svg" />
+    <EmbeddedResource Include="Images\ic_rocket.svg" />
+    <EmbeddedResource Include="Images\ic_settings.svg" />
+    <EmbeddedResource Include="Images\ic_share.svg" />
+    <EmbeddedResource Include="Images\ic_stop.svg" />
+    <EmbeddedResource Include="Images\ic_unchecked.svg" />
+    <EmbeddedResource Include="Images\ic_user.svg" />
+    <EmbeddedResource Include="Images\ic_virgin_mary.svg" />
+    <EmbeddedResource Include="Images\ic_workout.svg" />
+    <EmbeddedResource Include="exercise.pdf" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Features\AboutCreator\AboutCreatorPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Features\AboutProgram\AboutProgramPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Features\ComplementaryPrayers\DefaultPrayerPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Features\Exercises\ExercisesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Features\Login\LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Features\Menu\MenuPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Features\OurSupports\OurSupportsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Features\Preferences\PreferencesPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Features\Reflection\Annotation\Add\AddCommentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Features\Reflection\Detail\ReflectionDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Features\Welcome\WelcomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Features\AboutCreator\AboutCreatorPage.xaml.cs">
+      <DependentUpon>AboutCreatorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Features\AboutProgram\AboutProgramPage.xaml.cs">
+      <DependentUpon>AboutProgramPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Features\Exercises\ExercisesPageB.xaml.cs">
+      <DependentUpon>ExercisesPageB.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Features\Exercises\ExercisesPageA.xaml.cs">
+      <DependentUpon>ExercisesPageA.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Features\Exercises\ExercisesPage.xaml.cs">
+      <DependentUpon>ExercisesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Features\OurSupports\OurSupportsPage.xaml.cs">
+      <DependentUpon>OurSupportsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Features\Preferences\PreferencesPage.xaml.cs">
+      <DependentUpon>PreferencesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Features\Reflection\Annotation\Add\AddCommentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Features\Reflection\Detail\ReflectionDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+</Project>

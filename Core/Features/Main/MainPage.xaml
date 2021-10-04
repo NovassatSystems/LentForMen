@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Core.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:cake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:local="clr-namespace:Core"
+    x:Name="Root"
+    Padding="0"
+    ios:Page.UseSafeArea="True"
+    NavigationPage.HasNavigationBar="False">
+    <!--  MAIN  -->
+
+    <Grid
+        Padding="0"
+        HorizontalOptions="FillAndExpand"
+        RowDefinitions="Auto, Auto, Auto,*, Auto"
+        VerticalOptions="FillAndExpand">
+
+        <Image
+            Grid.RowSpan="5"
+            Aspect="AspectFill"
+            Opacity="1"
+            Source="ic_background" />
+        <Image
+            Grid.RowSpan="5"
+            Margin="0,0,0,-70"
+            Aspect="AspectFill"
+            Opacity="0.75"
+            Source="ic_aurora" />
+        <BoxView
+            Grid.RowSpan="5"
+            BackgroundColor="Black"
+            Opacity="0.5" />
+        <local:PrintViewControl
+            x:Name="toPrint"
+            Grid.Row="0"
+            BackgroundColor="#7F000000"
+            FileName="QuaresmaParaHomens"
+            HeightRequest="250"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="StartAndExpand">
+            <cake:PancakeView>
+                <Grid
+                    ColumnDefinitions="4*,6*"
+                    HorizontalOptions="FillAndExpand"
+                    RowSpacing="0"
+                    VerticalOptions="FillAndExpand">
+                    <!--<Label
+                    Grid.ColumnSpan="2"
+                    Margin="0,30,0,10"
+                    FontFamily="MontRegular"
+                    FontSize="16"
+                    HorizontalOptions="FillAndExpand"
+                    HorizontalTextAlignment="Center"
+                    TextColor="White"
+                    VerticalOptions="StartAndExpand">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Olá " />
+                            <Span Text="{Binding Name}" />
+                            <Span Text=". Salve Maria!" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>-->
+                    <ffimageloading:CachedImage
+                        Grid.ColumnSpan="2"
+                        Margin="0,0,0,0"
+                        Aspect="AspectFill"
+                        HeightRequest="200"
+                        HorizontalOptions="FillAndExpand"
+                        Source="{Binding ImageBackground}"
+                        VerticalOptions="FillAndExpand" />
+
+                    <Label
+                        Grid.Column="1"
+                        Margin="0,0,8,0"
+                        FontFamily="MontBold"
+                        FontSize="20"
+                        HorizontalOptions="End"
+                        HorizontalTextAlignment="End"
+                        Text="{Binding FraseInicial}"
+                        TextColor="White"
+                        VerticalOptions="Center" />
+
+                    <local:SvgImageControl
+                        x:Name="Share"
+                        Grid.ColumnSpan="2"
+                        Margin="16,0,0,16"
+                        HeightRequest="24"
+                        HorizontalOptions="Start"
+                        IsVisible="False"
+                        ResourceId="ic_share"
+                        VerticalOptions="End" />
+
+                    <local:SvgImageControl
+                        x:Name="toFollow"
+                        Grid.ColumnSpan="2"
+                        Margin="0,0,0,8"
+                        HeightRequest="50"
+                        HorizontalOptions="CenterAndExpand"
+                        ResourceId="ic_follow_us"
+                        VerticalOptions="EndAndExpand"
+                        WidthRequest="322" />
+
+                    <Button
+                        x:Name="toShare"
+                        Grid.ColumnSpan="2"
+                        Margin="16,0,0,16"
+                        BackgroundColor="Transparent"
+                        HeightRequest="40"
+                        HorizontalOptions="StartAndExpand"
+                        VerticalOptions="EndAndExpand"
+                        WidthRequest="40" />
+                </Grid>
+            </cake:PancakeView>
+        </local:PrintViewControl>
+
+        <cake:PancakeView
+            Grid.Row="1"
+            Margin="16,16,16,0"
+            CornerRadius="10"
+            HeightRequest="50"
+            HorizontalOptions="FillAndExpand">
+            <Grid
+                ColumnDefinitions="Auto, *"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+
+                <local:SvgImageControl
+                    Grid.Column="0"
+                    Command="{Binding OpenMenuCommand}"
+                    ResourceId="ic_menu" />
+                <cake:PancakeView
+                    Grid.Column="1"
+                    BackgroundColor="#7F000000"
+                    CornerRadius="10"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    <Label
+                        Grid.Column="1"
+                        Padding="8"
+                        FontFamily="MontLight"
+                        FontSize="14"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="Ver reflexão de hoje"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+                    <cake:PancakeView.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding OpenDayCommand}"
+                            CommandParameter="{Binding DayIndex}"
+                            NumberOfTapsRequired="1" />
+                    </cake:PancakeView.GestureRecognizers>
+                </cake:PancakeView>
+            </Grid>
+
+
+
+        </cake:PancakeView>
+
+        <!--  MENU  -->
+
+        <!--<Grid
+            Grid.Row="2"
+            Margin="0,16,0,0"
+            Padding="16,0"
+            ColumnSpacing="0">
+
+            <cake:PancakeView
+                Grid.ColumnSpan="2"
+                BackgroundColor="#7F000000"
+                CornerRadius="10"
+                HeightRequest="50" />
+
+            <cake:PancakeView
+                Grid.Column="0"
+                BackgroundColor="#4Cffffff"
+                CornerRadius="10,25,10,25"
+                HeightRequest="50"
+                HorizontalOptions="FillAndExpand">
+                <Label
+                    Padding="8"
+                    FontFamily="MontLight"
+                    FontSize="14"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Timeline"
+                    TextColor="White"
+                    VerticalOptions="CenterAndExpand">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding OpenDayCommand}"
+                            CommandParameter="{Binding DayIndex}"
+                            NumberOfTapsRequired="1" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+
+            </cake:PancakeView>
+
+            <cake:PancakeView
+                Grid.Column="1"
+                BackgroundColor="Transparent"
+                CornerRadius="25,10,25,10"
+                HeightRequest="50"
+                HorizontalOptions="FillAndExpand">
+                <Label
+                    Padding="8"
+                    FontFamily="MontLight"
+                    FontSize="14"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Anotações"
+                    TextColor="White"
+                    VerticalOptions="CenterAndExpand" />
+            </cake:PancakeView>
+        </Grid>-->
+        <!--  LISTA DE DIAS  -->
+        <CollectionView
+            Grid.Row="3"
+            Margin="16,8,16,0"
+            ItemsSource="{Binding Reflections}"
+            VerticalOptions="StartAndExpand">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout
+                    HorizontalItemSpacing="8"
+                    Orientation="Vertical"
+                    Span="1"
+                    VerticalItemSpacing="8" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <cake:PancakeView
+                        Padding="8,24,0,24"
+                        BackgroundColor="#7F000000"
+                        CornerRadius="24">
+
+                        <Grid ColumnDefinitions="Auto, *" RowDefinitions="Auto,*">
+
+                            <Frame
+                                Grid.RowSpan="2"
+                                Grid.Column="0"
+                                Margin="8,0,0,0"
+                                Padding="0"
+                                Background="White"
+                                BorderColor="#7F000000"
+                                CornerRadius="40"
+                                HeightRequest="80"
+                                HorizontalOptions="StartAndExpand"
+                                VerticalOptions="FillAndExpand"
+                                WidthRequest="80">
+                                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                    <Label
+                                        Margin="0,10,0,0"
+                                        FontFamily="MontRegular"
+                                        FontSize="25"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Text="{Binding DayofYear, StringFormat='{}{0:dd}'}"
+                                        VerticalOptions="FillAndExpand" />
+                                    <Label
+                                        Margin="4,-24,4,0"
+                                        FontFamily="MontRegular"
+                                        FontSize="10"
+                                        HorizontalOptions="CenterAndExpand"
+                                        Text="{Binding DayofYear, StringFormat='{}{0:MMMM}'}"
+                                        TextTransform="Uppercase"
+                                        VerticalOptions="StartAndExpand" />
+
+                                </StackLayout>
+                            </Frame>
+
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                FontFamily="MontLight"
+                                FontSize="14"
+                                TextColor="White"
+                                VerticalOptions="Start">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="{Binding Index}" />
+                                        <Span Text="º Dia" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                FontFamily="MontRegular"
+                                FontSize="14"
+                                LineBreakMode="TailTruncation"
+                                MaxLines="3"
+                                Text="{Binding Title}"
+                                TextColor="White"
+                                VerticalOptions="Start" />
+                        </Grid>
+                        <cake:PancakeView.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding BindingContext.OpenDayCommand, Source={x:Reference Root}}"
+                                CommandParameter="{Binding Index}"
+                                NumberOfTapsRequired="1" />
+                        </cake:PancakeView.GestureRecognizers>
+                    </cake:PancakeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Label
+            Grid.Row="4"
+            FontFamily="MontBlack"
+            FontSize="12"
+            HorizontalOptions="CenterAndExpand"
+            HorizontalTextAlignment="Center"
+            Text="Desenvolvido por Novassat Systems"
+            TextColor="White"
+            VerticalOptions="CenterAndExpand"
+            VerticalTextAlignment="Center">
+            <Label.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <OnPlatform.Platforms>
+                        <On Platform="iOS" Value="0, 16, 0, 16" />
+                        <On Platform="Android" Value="0,16,0,50" />
+                    </OnPlatform.Platforms>
+                </OnPlatform>
+            </Label.Margin>
+        </Label>
+    </Grid>
+</ContentPage>

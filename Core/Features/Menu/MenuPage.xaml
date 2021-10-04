@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Core.MenuPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:cake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:local="clr-namespace:Core"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+    Padding="0"
+    BackgroundColor="Transparent">
+
+    <ContentPage.Content>
+        <Grid
+            ColumnDefinitions="0.3*,9.4*,0.3*"
+            HorizontalOptions="FillAndExpand"
+            RowDefinitions="2.5*,5*,2.5*"
+            RowSpacing="0"
+            VerticalOptions="FillAndExpand">
+
+            <Image
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="3"
+                Aspect="AspectFill"
+                HorizontalOptions="FillAndExpand"
+                Opacity="0.8"
+                Source="ic_welcome_feet"
+                VerticalOptions="FillAndExpand" />
+            <Image
+                Grid.RowSpan="3"
+                Grid.ColumnSpan="3"
+                Margin="0,0,0,-70"
+                Aspect="AspectFill"
+                Opacity="0.2"
+                Source="ic_aurora" />
+
+            <BoxView
+                Grid.Row="0"
+                Grid.ColumnSpan="3"
+                Background="Transparent"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <BoxView.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CloseModalCommand}" NumberOfTapsRequired="1" />
+                </BoxView.GestureRecognizers>
+            </BoxView>
+            <BoxView
+                Grid.Row="2"
+                Grid.ColumnSpan="3"
+                Background="Transparent"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <BoxView.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CloseModalCommand}" NumberOfTapsRequired="1" />
+                </BoxView.GestureRecognizers>
+            </BoxView>
+            <cake:PancakeView
+                Grid.Row="1"
+                Grid.Column="1"
+                Margin="0,0,0,0"
+                CornerRadius="12"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <Grid
+                    Padding="20"
+                    BackgroundColor="Black"
+                    ColumnDefinitions="Auto, *"
+                    HorizontalOptions="FillAndExpand"
+                    RowDefinitions="Auto, Auto, Auto, Auto, *"
+                    RowSpacing="40"
+                    VerticalOptions="FillAndExpand">
+
+                    <Label
+                        Grid.Row="0"
+                        Grid.ColumnSpan="2"
+                        Margin="10,0,0,10"
+                        FontFamily="MontRegular"
+                        FontSize="18"
+                        HorizontalOptions="StartAndExpand"
+                        Text="Menu"
+                        TextColor="White"
+                        VerticalOptions="StartAndExpand" />
+
+                    <local:SvgImageControl
+                        Grid.Row="0"
+                        Grid.ColumnSpan="2"
+                        Margin="0,0,-16,0"
+                        Command="{Binding CloseModalCommand}"
+                        HeightRequest="20"
+                        HorizontalOptions="EndAndExpand"
+                        ResourceId="ic_close"
+                        VerticalOptions="StartAndExpand" />
+
+
+                    <local:SvgImageControl
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Command="{Binding AboutProgramCommand}"
+                        HeightRequest="20"
+                        HorizontalOptions="StartAndExpand"
+                        ResourceId="ic_about_program"
+                        VerticalOptions="StartAndExpand" />
+
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        FontFamily="MontRegular"
+                        FontSize="16"
+                        HorizontalOptions="StartAndExpand"
+                        Text="Sobre o programa"
+                        TextColor="White"
+                        VerticalOptions="StartAndExpand">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AboutProgramCommand}" NumberOfTapsRequired="1" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <local:SvgImageControl
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Command="{Binding AboutCreatorCommand}"
+                        HeightRequest="20"
+                        HorizontalOptions="StartAndExpand"
+                        ResourceId="ic_about_creator"
+                        VerticalOptions="StartAndExpand" />
+
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        FontFamily="MontRegular"
+                        FontSize="16"
+                        HorizontalOptions="StartAndExpand"
+                        Text="Sobre o idealizador"
+                        TextColor="White"
+                        VerticalOptions="StartAndExpand">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AboutCreatorCommand}" NumberOfTapsRequired="1" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <local:SvgImageControl
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Command="{Binding OurSupportsCommand}"
+                        HeightRequest="20"
+                        HorizontalOptions="StartAndExpand"
+                        ResourceId="ic_exame"
+                        VerticalOptions="StartAndExpand" />
+
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        FontFamily="MontRegular"
+                        FontSize="16"
+                        HorizontalOptions="StartAndExpand"
+                        Text="Orações complementares"
+                        TextColor="White"
+                        VerticalOptions="StartAndExpand">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OurSupportsCommand}" NumberOfTapsRequired="1" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                    <Label
+                        Grid.Row="4"
+                        Grid.ColumnSpan="2"
+                        Margin="0,0,0,-40"
+                        FontFamily="MontBlack"
+                        FontSize="12"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Text="{Binding Version}"
+                        TextColor="White"
+                        VerticalOptions="EndAndExpand"
+                        VerticalTextAlignment="Center">
+                        <Label.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <OnPlatform.Platforms>
+                                    <On Platform="iOS" Value="0" />
+                                    <On Platform="Android" Value="0,0,0,-40" />
+                                </OnPlatform.Platforms>
+                            </OnPlatform>
+                        </Label.Margin>
+                    </Label>
+                </Grid>
+            </cake:PancakeView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

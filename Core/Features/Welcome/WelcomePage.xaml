@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Core.WelcomePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:cake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:local="clr-namespace:Core"
+    android:Application.WindowSoftInputModeAdjust="Resize"
+    NavigationPage.HasNavigationBar="False">
+    <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,*">
+            <Image
+                Grid.RowSpan="5"
+                Margin="0,0,0,0"
+                Aspect="AspectFill"
+                Opacity="0.5"
+                Source="ic_welcome_feet" />
+            <Image
+                Grid.RowSpan="5"
+                Margin="0,0,0,-70"
+                Aspect="AspectFill"
+                Opacity="0.2"
+                Source="ic_aurora.jpg" />
+
+            <BoxView
+                Grid.RowSpan="5"
+                BackgroundColor="Black"
+                Opacity="0.5" />
+
+            <Label
+                Grid.Row="0"
+                Margin="36,70,36,0"
+                FontFamily="MontBlack"
+                FontSize="35"
+                Text="BEM VINDO"
+                TextColor="White"
+                VerticalOptions="StartAndExpand" />
+
+            <Label
+                Grid.Row="1"
+                Margin="36,0,36,0"
+                FontFamily="MontRegular"
+                FontSize="20"
+                Text="A partir de agora você começa uma nova preparação de exercício espiritual em preparação para a páscoa e para fortalecer ainda mais a sua masculinidade!"
+                TextColor="White"
+                VerticalOptions="StartAndExpand" />
+
+            <Label
+                Grid.Row="2"
+                Margin="36,24"
+                FontFamily="MontRegular"
+                FontSize="14"
+                Text="Para continuar, por favor, insira seu nome abaixo:"
+                TextColor="White" />
+
+            <cake:PancakeView
+                Grid.Row="3"
+                Margin="36,0"
+                Padding="8"
+                CornerRadius="10"
+                VerticalOptions="StartAndExpand">
+
+                <Entry
+                    x:Name="entryName"
+                    FontFamily="MontBold"
+                    HorizontalOptions="FillAndExpand"
+                    Keyboard="Chat"
+                    Placeholder="Nome"
+                    PlaceholderColor="White"
+                    Text="{Binding Name}"
+                    TextColor="White"
+                    VerticalOptions="CenterAndExpand" />
+
+
+                <cake:PancakeView.Border>
+                    <cake:Border
+                        x:Name="border"
+                        DrawingStyle="Outside"
+                        Thickness="1"
+                        Color="White" />
+                </cake:PancakeView.Border>
+            </cake:PancakeView>
+
+            <cake:PancakeView
+                Grid.Row="4"
+                Margin="36,0"
+                Padding="16"
+                BackgroundColor="#7F000000"
+                CornerRadius="24"
+                VerticalOptions="StartAndExpand">
+                <Label
+                    BackgroundColor="Transparent"
+                    FontFamily="MontLight"
+                    FontSize="22"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="Iniciar"
+                    TextColor="White"
+                    VerticalOptions="CenterAndExpand" />
+                <cake:PancakeView.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NextCommand}" NumberOfTapsRequired="1" />
+                </cake:PancakeView.GestureRecognizers>
+            </cake:PancakeView>
+
+        </Grid>
+    </ScrollView>
+
+</ContentPage>

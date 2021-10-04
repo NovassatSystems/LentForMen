@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication
+    x:Class="Core.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Core"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
+    xmlns:xct="http://xamarin.com/schemas/2020/toolkit">
+    <!--
+        Define global resources and styles here, that apply to all pages in your app.
+    -->
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <local:ObjectIsNotNullConverter x:Key="isNotNull" />
+            <local:InverseBooleanConverter x:Key="inverseBoolean" />
+
+            <Thickness x:Key="defaultPadding">20,30,20,0</Thickness>
+
+            <Color x:Key="grayBackgroundPage">#E5E5E5</Color>
+            <Color x:Key="blackColor">#000000</Color>
+            <Color x:Key="grayColor">#9E9292</Color>
+            <Color x:Key="lineGrayColor">#809E9292</Color>
+
+            <Style TargetType="ScrollView">
+                <Setter Property="VerticalScrollBarVisibility" Value="Never" />
+                <Setter Property="HorizontalScrollBarVisibility" Value="Never" />
+            </Style>
+
+
+
+        </ResourceDictionary>
+    </Application.Resources>
+</prism:PrismApplication>  
